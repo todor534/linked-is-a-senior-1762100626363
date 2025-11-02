@@ -1,0 +1,29 @@
+{
+  "name": "linked-studio-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Linked is a senior software & AI development studio. We design and ship production-ready web apps, custom automations, e-commerce shops, and AI-powered services.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.8"
+  }
+}
