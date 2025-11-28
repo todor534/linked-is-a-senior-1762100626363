@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
-import { RouterProvider } from 'react-router-dom';
-import router from './router';
+import AppRouter from './router';
 
 const styles: Record<string, React.CSSProperties> = {
   app: {
@@ -56,7 +55,7 @@ function App() {
           </div>
         }
       >
-        <RouterProvider router={router} />
+        <AppRouter />
       </Suspense>
     </div>
   );

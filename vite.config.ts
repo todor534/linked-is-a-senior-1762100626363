@@ -35,7 +35,7 @@ function serverlessApiDevPlugin(): Plugin {
           const method = req.method || 'GET'
           const body = await readBodyIfNeeded(req, method)
 
-          const request = new Request(url.toString(), { method, headers, body })
+          const request = new Request(url.toString(), { method, headers, body: body ? new Uint8Array(body) : undefined })
           const response: Response = await handle(request)
 
           res.statusCode = response.status

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="t">
+  <title id="t">Linked — Senior Software & AI Studio</title>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <g transform="rotate(-45 32 32)" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <rect x="12" y="26" width="20" height="12" rx="6"/>
+    <rect x="32" y="26" width="20" height="12" rx="6"/>
+    <path d="M28 32h8"/>
+  </g>
+  <circle cx="49" cy="15" r="2" fill="#fff" opacity=".95"/>
+</svg>

@@ -141,7 +141,7 @@ async function parseResponse<T>(res: Response): Promise<ApiResult<T>> {
 }
 
 type RequestOptions = {
-  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD';
   headers?: HeadersInit;
   query?: Record<string, string | number | boolean | undefined | null>;
   body?: unknown;

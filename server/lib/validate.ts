@@ -318,7 +318,7 @@ export function validateSchema<T extends Record<string, any>>(
               toLower: (itemRule as StringRule).toLower,
             });
             if (!s) continue;
-            if ((itemRule as StringRule).min && s.length < (itemRule as StringRule).min) continue;
+            if ((itemRule as StringRule).min && s.length < ((itemRule as StringRule).min ?? 0)) continue;
             if ((itemRule as StringRule).pattern && !(itemRule as StringRule).pattern!.test(s)) continue;
             arr.push(s);
           } else if (itemRule.type === "enum") {

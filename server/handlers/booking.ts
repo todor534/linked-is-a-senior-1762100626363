@@ -1,4 +1,3 @@
-import type { } from 'node-fetch'; // no-op type import for environments that provide Fetch API
 
 type BookingPayload = {
   name: string;
@@ -227,7 +226,6 @@ function looksLikeUrl(v: string): boolean {
 
 function cryptoRandomId(): string {
   if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
-    // @ts-expect-error - randomUUID exists in modern runtimes
     return crypto.randomUUID();
   }
   return 'id_' + Math.random().toString(36).slice(2) + Date.now().toString(36);
