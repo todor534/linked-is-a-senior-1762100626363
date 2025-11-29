@@ -5,337 +5,126 @@ import WorkHighlights from '../components/WorkHighlights';
 import ProcessSteps from '../components/ProcessSteps';
 import TrustBar from '../components/TrustBar';
 
-const styles: { [k: string]: React.CSSProperties } = {
-  page: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 48,
-  },
-  hero: {
-    background:
-      'radial-gradient(1200px 400px at 50% -200px, rgba(99,102,241,0.08), rgba(99,102,241,0) 60%), linear-gradient(180deg, rgba(17,24,39,0.02), rgba(17,24,39,0))',
-    borderBottom: '1px solid rgba(0,0,0,0.06)',
-  },
-  container: {
-    maxWidth: 1200,
-    margin: '0 auto',
-    padding: '64px 20px',
-  },
-  heroInner: {
-    display: 'grid',
-    gridTemplateColumns: '1.2fr 1fr',
-    gap: 32,
-  },
-  heading: {
-    fontSize: 40,
-    lineHeight: 1.1,
-    margin: 0,
-    letterSpacing: -0.5,
-  },
-  subheading: {
-    marginTop: 12,
-    color: '#4b5563',
-    fontSize: 18,
-  },
-  badgesRow: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginTop: 16,
-  },
-  badge: {
-    fontSize: 12,
-    padding: '6px 10px',
-    borderRadius: 999,
-    border: '1px solid rgba(0,0,0,0.08)',
-    background: '#fff',
-    color: '#111827',
-  },
-  heroCard: {
-    background: '#fff',
-    border: '1px solid rgba(0,0,0,0.08)',
-    borderRadius: 12,
-    padding: 20,
-    boxShadow: '0 6px 24px rgba(17,24,39,0.06)',
-    alignSelf: 'start',
-  },
-  heroCardTitle: {
-    margin: 0,
-    fontSize: 18,
-  },
-  heroList: {
-    margin: '12px 0 0',
-    paddingLeft: 18,
-    color: '#374151',
-    lineHeight: 1.6,
-  },
-  ctas: {
-    display: 'flex',
-    gap: 12,
-    flexWrap: 'wrap',
-    marginTop: 20,
-  },
-  btnPrimary: {
-    background: '#111827',
-    color: '#fff',
-    padding: '12px 16px',
-    borderRadius: 10,
-    textDecoration: 'none',
-    fontWeight: 600,
-    border: '1px solid #111827',
-  },
-  btnSecondary: {
-    background: '#fff',
-    color: '#111827',
-    padding: '12px 16px',
-    borderRadius: 10,
-    textDecoration: 'none',
-    fontWeight: 600,
-    border: '1px solid rgba(0,0,0,0.12)',
-  },
-  section: {
-    padding: '8px 20px 0',
-    maxWidth: 1200,
-    margin: '0 auto',
-  },
-  sectionHeader: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-    gap: 16,
-    marginBottom: 12,
-  },
-  sectionTitle: {
-    fontSize: 28,
-    margin: 0,
-    letterSpacing: -0.2,
-  },
-  sectionSubtitle: {
-    color: '#4b5563',
-    marginTop: 6,
-    fontSize: 16,
-  },
-  split: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: 24,
-    marginTop: 8,
-  },
-  card: {
-    background: '#fff',
-    border: '1px solid rgba(0,0,0,0.08)',
-    borderRadius: 12,
-    padding: 20,
-  },
-  list: {
-    margin: '8px 0 0',
-    paddingLeft: 18,
-    color: '#374151',
-    lineHeight: 1.7,
-  },
-  tear: {
-    height: 1,
-    background:
-      'linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.12), rgba(0,0,0,0))',
-    margin: '0 auto',
-    width: '92%',
-  },
-  ctaBand: {
-    background:
-      'linear-gradient(180deg, rgba(99,102,241,0.05), rgba(99,102,241,0.02))',
-    borderTop: '1px solid rgba(0,0,0,0.06)',
-    borderBottom: '1px solid rgba(0,0,0,0.06)',
-  },
-  ctaBandInner: {
-    maxWidth: 1200,
-    margin: '0 auto',
-    padding: '36px 20px',
-    display: 'grid',
-    gridTemplateColumns: '2fr 1.2fr',
-    gap: 20,
-    alignItems: 'center',
-  },
-  ctaBandTitle: {
-    margin: 0,
-    fontSize: 24,
-  },
-  ctaBandText: {
-    color: '#4b5563',
-    marginTop: 6,
-  },
-  ctaBandActions: {
-    justifySelf: 'end',
-    display: 'flex',
-    gap: 10,
-    flexWrap: 'wrap',
-  },
-  tinyNote: {
-    fontSize: 12,
-    color: '#6b7280',
-    marginTop: 8,
-  },
-  responsiveOnly: {
-    display: 'none',
-  },
-  '@mediaSmall': {},
-};
-
-// Simple responsive adjustments without a CSS file
-const useResponsive = () => {
-  const [isSmall, setSmall] = React.useState(false);
-  React.useEffect(() => {
-    const mq = window.matchMedia('(max-width: 860px)');
-    const onChange = () => setSmall(mq.matches);
-    onChange();
-    mq.addEventListener ? mq.addEventListener('change', onChange) : mq.addListener(onChange);
-    return () => {
-      mq.removeEventListener ? mq.removeEventListener('change', onChange) : mq.removeListener(onChange);
-    };
-  }, []);
-  return { isSmall };
-};
-
 export default function Services() {
-  const { isSmall } = useResponsive();
-
   return (
-    <main style={styles.page}>
-      <section style={styles.hero}>
-        <div style={{ ...styles.container, paddingBottom: 48 }}>
-          <div style={{ ...styles.heroInner, gridTemplateColumns: isSmall ? '1fr' : styles.heroInner.gridTemplateColumns }}>
-            <div>
-              <h1 style={styles.heading}>Senior software and AI development services</h1>
-              <p style={styles.subheading}>
-                We design and ship production-ready web apps, process automations, e‑commerce, and AI‑powered services.
-                If it runs in a browser or on the web, we build it—marketing sites, secure client portals, order workflows,
-                dashboards, and 3rd‑party integrations.
-              </p>
-              <div style={styles.badgesRow}>
-                <span style={styles.badge}>Automation‑first</span>
-                <span style={styles.badge}>Fast iteration</span>
-                <span style={styles.badge}>Clear scopes</span>
-                <span style={styles.badge}>Senior engineering</span>
-              </div>
-              <div style={styles.ctas}>
-                <Link to="/contact" style={styles.btnPrimary}>Book a free consult</Link>
-                <Link to="/quote" style={styles.btnSecondary}>Request a quote</Link>
-                <Link to="/work" style={styles.btnSecondary}>View portfolio</Link>
-              </div>
+    <main>
+      <section className="hero hero-home">
+        <div className="container">
+          <div style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto' }}>
+            <span className="hero-kicker">
+              <span style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                background: 'var(--success)',
+                boxShadow: '0 0 0 4px color-mix(in oklab, var(--success), transparent 85%)'
+              }} />
+              Services
+            </span>
+            <h1 className="hero-title" style={{ marginBottom: 'var(--space-4)' }}>
+              Enterprise-Grade Software Development, Delivered at Startup Speed
+            </h1>
+            <p className="hero-subtitle" style={{ margin: '0 auto var(--space-6)' }}>
+              We design and ship production-ready web apps, AI copilots, process automations, and e‑commerce platforms.
+              From concept to deployment in weeks, not quarters—with the quality and security of enterprise engineering.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)', justifyContent: 'center', marginBottom: 'var(--space-4)' }}>
+              <span className="badge">Automation‑first</span>
+              <span className="badge">Fast iteration</span>
+              <span className="badge">Clear scopes</span>
+              <span className="badge">Senior engineering</span>
             </div>
-            <aside style={styles.heroCard}>
-              <h3 style={styles.heroCardTitle}>What we deliver</h3>
-              <ul style={styles.heroList}>
-                <li>Production web apps and portals with secure login</li>
-                <li>AI assistants, search, and automation workflows</li>
-                <li>E‑commerce and subscription billing</li>
-                <li>Dashboards and data integrations</li>
-                <li>Banking‑grade solutions experience</li>
-              </ul>
-              <p style={styles.tinyNote}>
-                Selected work: Kaya – AI Business Assistant, Cashing in on AI, and Nancy Atanasova Dental Lab (patient intake and ordering).
-              </p>
-            </aside>
+            <div className="hero-ctas">
+              <Link to="/contact" className="btn btn-primary btn-lg">Book Free Consult</Link>
+              <Link to="/quote" className="btn btn-secondary btn-lg">Get Quote</Link>
+              <Link to="/work" className="btn btn-ghost btn-lg">View Work</Link>
+            </div>
           </div>
         </div>
       </section>
 
-      <div style={styles.section}>
-        <div style={styles.sectionHeader}>
-          <div>
-            <h2 style={styles.sectionTitle}>Services</h2>
-            <p style={styles.sectionSubtitle}>End‑to‑end delivery—from scoping and UX to deployment, monitoring, and iteration.</p>
-          </div>
-          {!isSmall && (
-            <div>
-              <Link to="/quote" style={styles.btnSecondary}>Get a tailored estimate</Link>
-            </div>
-          )}
-        </div>
-        <ServicesGrid />
-      </div>
-
-      <div style={styles.tear} />
-
-      <div style={styles.section}>
-        <div style={styles.split}>
-          <div style={styles.card}>
-            <h3 style={{ margin: 0, fontSize: 18 }}>What we build</h3>
-            <ul style={styles.list}>
-              <li>Client portals, onboarding, verification, and order workflows</li>
-              <li>AI copilots for teams: knowledge search, document Q&A, and agents</li>
-              <li>Marketing sites and high‑performance landing pages</li>
-              <li>E‑commerce stores with custom logic, subscriptions, and fulfillment</li>
-              <li>Dashboards, analytics, and internal tooling</li>
-              <li>3rd‑party and data integrations (payments, auth, CRMs, ERPs)</li>
-            </ul>
-          </div>
-          <div style={styles.card}>
-            <h3 style={{ margin: 0, fontSize: 18 }}>Why clients choose Linked</h3>
-            <ul style={styles.list}>
-              <li>Clear scopes and proactive, senior communication</li>
-              <li>Fast iteration with visible progress every week</li>
-              <li>Automation‑first mindset to reduce manual ops and cost</li>
-              <li>Battle‑tested engineering and deployment practices</li>
-              <li>Banking‑grade delivery experience in lending automation</li>
-              <li>Long‑term reliability and maintainability baked in</li>
-            </ul>
-          </div>
-        </div>
+      <div style={{ marginTop: 'var(--space-12)' }}>
+        <ServicesGrid showHeader={true} showCTAs={false} />
       </div>
 
       <TrustBar />
 
-      <div style={styles.section}>
-        <div style={styles.sectionHeader}>
-          <div>
-            <h2 style={styles.sectionTitle}>Selected work</h2>
-            <p style={styles.sectionSubtitle}>A snapshot of outcomes we’ve delivered across AI, automation, and web apps.</p>
-          </div>
-          {!isSmall && <Link to="/work" style={styles.btnSecondary}>Explore portfolio</Link>}
-        </div>
-        <WorkHighlights />
-      </div>
-
-      <div style={styles.tear} />
-
-      <div style={styles.section}>
-        <div style={{ ...styles.sectionHeader, marginBottom: 0 }}>
-          <div>
-            <h2 style={styles.sectionTitle}>How we work</h2>
-            <p style={styles.sectionSubtitle}>Lean, collaborative, and focused on shipping real value quickly.</p>
-          </div>
-        </div>
-        <div style={{ marginTop: 8 }}>
-          <ProcessSteps />
-        </div>
-      </div>
-
-      <section style={styles.ctaBand}>
-        <div
-          style={{
-            ...styles.ctaBandInner,
-            gridTemplateColumns: isSmall ? '1fr' : styles.ctaBandInner.gridTemplateColumns,
-          }}
-        >
-          <div>
-            <h3 style={styles.ctaBandTitle}>Ready to accelerate your roadmap?</h3>
-            <p style={styles.ctaBandText}>
-              Tell us about your goals. We’ll scope clearly, propose a plan, and get you shipping in days—not months.
-            </p>
-          </div>
-          <div style={{ ...styles.ctaBandActions, justifySelf: isSmall ? 'start' : 'end' }}>
-            <Link to="/contact" style={styles.btnPrimary}>Book a free consult</Link>
-            <Link to="/quote" style={styles.btnSecondary}>Request a quote</Link>
-            <Link to="/work" style={styles.btnSecondary}>View portfolio</Link>
+      <section className="section">
+        <div className="container">
+          <div className="grid grid-2" style={{ gap: 'var(--space-8)' }}>
+            <div className="card padded">
+              <h3 style={{ marginTop: 0 }}>What We Build</h3>
+              <ul className="stack-sm">
+                <li>Client portals with secure login, onboarding, and verification workflows</li>
+                <li>AI copilots for teams: knowledge search, document analysis, and intelligent automation</li>
+                <li>Marketing sites and high-performance landing pages that convert</li>
+                <li>E‑commerce platforms with custom business logic, subscriptions, and fulfillment</li>
+                <li>Dashboards, analytics, and internal tools that improve decision-making</li>
+                <li>3rd‑party integrations: payments, authentication, CRMs, ERPs, and data pipelines</li>
+              </ul>
+            </div>
+            <div className="card padded">
+              <h3 style={{ marginTop: 0 }}>Why Teams Choose Linked</h3>
+              <ul className="stack-sm">
+                <li><strong>Banking-grade experience:</strong> Delivered credit origination and lending automation in regulated environments</li>
+                <li><strong>Clear scopes, transparent pricing:</strong> Fixed quotes and milestone-based billing eliminate budget surprises</li>
+                <li><strong>Fast iteration, visible progress:</strong> Weekly demos keep stakeholders aligned</li>
+                <li><strong>Automation-first approach:</strong> Reduce manual operations and costs from day one</li>
+                <li><strong>Production-ready standards:</strong> Testing, monitoring, and security are non-negotiable</li>
+                <li><strong>Senior engineering only:</strong> No juniors means clearer communication and faster execution</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <div style={{ ...styles.section, paddingBottom: 48 }}>
-        <p style={{ ...styles.tinyNote, textAlign: 'center' }}>
-          Prefer email? Reach us via the contact form—attach specs, timelines, or references and we’ll respond promptly.
-        </p>
-      </div>
+      <section className="section-lg" style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-kicker">Portfolio</span>
+            <h2>Selected Work</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+              Real projects, real outcomes. From AI assistants to patient portals, we ship software that solves business problems.
+            </p>
+          </div>
+          <WorkHighlights />
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'var(--space-8)' }}>
+            <Link to="/work" className="btn btn-primary">Explore Full Portfolio</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-kicker">Process</span>
+            <h2>How We Work</h2>
+            <p className="section-subtitle" style={{ margin: '0 auto' }}>
+              Lean, collaborative, and focused on shipping working software every week.
+            </p>
+          </div>
+          <ProcessSteps />
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingBottom: 'var(--space-24)' }}>
+        <div className="container">
+          <div className="cta" style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <h2>Ready to Accelerate Your Roadmap?</h2>
+            <p className="text-muted">
+              Tell us about your goals. We'll scope clearly, propose a plan, and get you shipping production software
+              in weeks—not months.
+            </p>
+            <div className="cta-actions">
+              <Link to="/contact" className="btn btn-accent btn-lg">Book Free Consult</Link>
+              <Link to="/quote" className="btn btn-secondary btn-lg">Get Quote</Link>
+            </div>
+            <p className="text-muted text-center" style={{ fontSize: '0.875rem', marginTop: 'var(--space-6)', marginBottom: 0 }}>
+              Prefer email? Reach us via the contact form—we respond within one business day.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

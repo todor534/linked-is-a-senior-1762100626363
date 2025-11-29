@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-type CSS = React.CSSProperties;
-
-// Import services data but keep it flexible to avoid tight coupling to its shape
+// Import services data
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { services as importedServices } from '../data/services';
 
-// Fallback default services if data file is empty or missing fields
+// Fallback default services
 const fallbackServices = [
   {
     id: 'web-apps',
     title: 'Production Web Apps',
     description:
-      'Design, build, and ship robust apps that run in the browser—dashboards, portals, and end-to-end workflows.',
+      'Transform your workflow with custom web applications that your team will actually use—dashboards, portals, and end-to-end business tools.',
     features: ['React + TypeScript', 'Secure auth', 'Role-based access', 'CI/CD'],
     emoji: '🧩',
   },
@@ -21,7 +19,7 @@ const fallbackServices = [
     id: 'automation',
     title: 'Process Automation',
     description:
-      'Eliminate manual tasks with custom automations—forms, approvals, notifications, and data syncs.',
+      'Eliminate repetitive work and reduce errors with intelligent automations—from document processing to approval workflows.',
     features: ['Workflow engines', 'Document pipelines', 'APIs & webhooks', 'RPA'],
     emoji: '⚙️',
   },
@@ -29,7 +27,7 @@ const fallbackServices = [
     id: 'ecommerce',
     title: 'E‑commerce Experiences',
     description:
-      'High-converting storefronts and order flows—from subscriptions to B2B portals and fulfillment.',
+      'Convert browsers into buyers with high-performing storefronts and seamless checkout experiences—from subscriptions to B2B.',
     features: ['Headless storefronts', 'Checkout flows', 'Payments', 'Analytics'],
     emoji: '🛒',
   },
@@ -37,7 +35,7 @@ const fallbackServices = [
     id: 'ai-services',
     title: 'AI‑Powered Services',
     description:
-      'Ship AI copilots and assistants that streamline operations and deliver better customer experiences.',
+      'Ship AI copilots that actually work—from customer support automation to internal knowledge assistants that reduce busywork.',
     features: ['RAG & agents', 'LLM orchestration', 'Safety & evals', 'Observability'],
     emoji: '🤖',
   },
@@ -45,7 +43,7 @@ const fallbackServices = [
     id: 'portals-dashboards',
     title: 'Client Portals & Dashboards',
     description:
-      'Secure portals for customers and teams—file exchange, forms, reporting, and self‑service tools.',
+      'Give customers and teams the self-service tools they need—secure portals for document exchange, reporting, and account management.',
     features: ['SSO & MFA', 'Audit trails', 'Exports', 'Access control'],
     emoji: '📊',
   },
@@ -53,7 +51,7 @@ const fallbackServices = [
     id: 'integrations',
     title: 'Integrations & Data',
     description:
-      'Connect SaaS and internal systems—CRM, banking, payments, accounting, and custom APIs.',
+      'Connect your tech stack seamlessly—sync data between CRM, payments, accounting, and custom systems without manual work.',
     features: ['REST/GraphQL', 'ETL pipelines', '3rd‑party APIs', 'Webhooks'],
     emoji: '🔌',
   },
@@ -81,10 +79,10 @@ function normalizeServices(raw: unknown): Array<{
     const features: string[] = Array.isArray(item.features)
       ? item.features
       : Array.isArray(item.tags)
-      ? item.tags
-      : Array.isArray(item.items)
-      ? item.items
-      : [];
+        ? item.tags
+        : Array.isArray(item.items)
+          ? item.items
+          : [];
     const emoji: string | undefined = item.emoji || item.icon || undefined;
     return {
       id,
@@ -98,152 +96,6 @@ function normalizeServices(raw: unknown): Array<{
   return normalized.length ? normalized : fallbackServices;
 }
 
-const styles: Record<string, CSS> = {
-  section: {
-    padding: '64px 0',
-    backgroundColor: '#ffffff',
-  },
-  container: {
-    maxWidth: 1200,
-    margin: '0 auto',
-    padding: '0 20px',
-  },
-  header: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-    gap: 12,
-    marginBottom: 28,
-  },
-  title: {
-    margin: 0,
-    fontSize: 28,
-    lineHeight: 1.2,
-    fontWeight: 700,
-    color: '#0f172a',
-    letterSpacing: '-0.02em',
-  },
-  subtitle: {
-    margin: 0,
-    fontSize: 16,
-    lineHeight: 1.6,
-    color: '#334155',
-    maxWidth: 720,
-  },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-    gap: 20,
-  },
-  card: {
-    border: '1px solid #e5e7eb',
-    borderRadius: 12,
-    backgroundColor: '#ffffff',
-    padding: 20,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 12,
-    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.06)',
-  },
-  iconWrap: {
-    width: 40,
-    height: 40,
-    borderRadius: 8,
-    backgroundColor: '#eff6ff',
-    color: '#1d4ed8',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: 20,
-    fontWeight: 700,
-    flexShrink: 0,
-  },
-  cardHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 12,
-  },
-  cardTitle: {
-    margin: 0,
-    fontSize: 18,
-    lineHeight: 1.3,
-    fontWeight: 700,
-    color: '#0f172a',
-    letterSpacing: '-0.01em',
-  },
-  cardDesc: {
-    margin: 0,
-    fontSize: 14,
-    lineHeight: 1.6,
-    color: '#475569',
-    flexGrow: 0,
-  },
-  featureList: {
-    listStyle: 'none',
-    padding: 0,
-    margin: '4px 0 0 0',
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 8,
-  },
-  featureItem: {
-    fontSize: 12,
-    lineHeight: 1,
-    color: '#0f172a',
-    backgroundColor: '#f8fafc',
-    border: '1px solid #eef2f7',
-    borderRadius: 999,
-    padding: '8px 10px',
-    whiteSpace: 'nowrap',
-  },
-  cardActions: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 8,
-    marginTop: 'auto',
-  },
-  buttonBase: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 8,
-    fontSize: 14,
-    fontWeight: 600,
-    textDecoration: 'none',
-    cursor: 'pointer',
-    userSelect: 'none',
-    transition: 'transform 120ms ease',
-    border: '1px solid transparent',
-    lineHeight: '20px',
-    padding: '10px 14px',
-  },
-  buttonPrimary: {
-    backgroundColor: '#2563eb',
-    color: '#ffffff',
-    borderColor: '#2563eb',
-  },
-  buttonOutline: {
-    backgroundColor: '#ffffff',
-    color: '#1f2937',
-    borderColor: '#e5e7eb',
-  },
-  footerCtas: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 12,
-    marginTop: 28,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  smallNote: {
-    fontSize: 12,
-    color: '#64748b',
-    marginTop: 6,
-    textAlign: 'center',
-  },
-};
-
 type ServicesGridProps = {
   showHeader?: boolean;
   showCTAs?: boolean;
@@ -253,21 +105,21 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ showHeader = true, showCTAs
   const services = normalizeServices(importedServices);
 
   return (
-    <section style={styles.section} aria-labelledby="services-heading">
-      <div style={styles.container}>
+    <section className="section" aria-labelledby="services-heading">
+      <div className="container">
         {showHeader && (
-          <div style={styles.header}>
-            <h2 id="services-heading" style={styles.title}>
-              What we build
+          <div className="section-header text-center">
+            <h2 id="services-heading" className="section-title" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)' }}>
+              What We Build
             </h2>
-            <p style={styles.subtitle}>
-              Senior engineering for production-grade web apps, automations, e‑commerce, and AI.
-              Clear scopes, fast iteration, and an automation‑first mindset.
+            <p className="section-subtitle" style={{ maxWidth: '720px', margin: '0 auto' }}>
+              Senior engineering for production-grade solutions. We deliver clear scopes, fast iteration,
+              and an automation-first mindset that reduces costs and accelerates your roadmap.
             </p>
           </div>
         )}
 
-        <div style={styles.grid}>
+        <div className="grid grid-3" style={{ marginTop: 'var(--space-8)' }}>
           {services.map((service) => {
             const title = service.title;
             const desc = service.description;
@@ -276,39 +128,39 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ showHeader = true, showCTAs
             const qParam = encodeURIComponent(title);
 
             return (
-              <article key={service.id} style={styles.card} aria-label={title}>
-                <div style={styles.cardHeader}>
-                  <div style={styles.iconWrap} aria-hidden="true">
-                    <span>{emoji}</span>
+              <article key={service.id} className="card padded card-hover" aria-label={title}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-3)' }}>
+                  <div className="service-icon" aria-hidden="true">
+                    <span style={{ fontSize: '1.25rem' }}>{emoji}</span>
                   </div>
-                  <h3 style={styles.cardTitle}>{title}</h3>
+                  <h3 className="service-title">{title}</h3>
                 </div>
-                <p style={styles.cardDesc}>{desc}</p>
+                <p className="service-desc">{desc}</p>
 
                 {features.length > 0 && (
-                  <ul style={styles.featureList} aria-label="Capabilities">
+                  <div className="service-meta">
                     {features.slice(0, 6).map((f, idx) => (
-                      <li key={`${service.id}-feat-${idx}`} style={styles.featureItem}>
+                      <span key={`${service.id}-feat-${idx}`} className="badge">
                         {f}
-                      </li>
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 )}
 
-                <div style={styles.cardActions}>
+                <div style={{ display: 'flex', gap: 'var(--space-2)', marginTop: 'var(--space-4)' }}>
                   <Link
                     to={{ pathname: '/quote', search: `?service=${qParam}` }}
-                    style={{ ...styles.buttonBase, ...styles.buttonPrimary }}
-                    aria-label={`Request a quote for ${title}`}
+                    className="btn btn-primary btn-sm"
+                    aria-label={`Get quote for ${title}`}
                   >
-                    Request a quote
+                    Get Quote
                   </Link>
                   <Link
                     to={{ pathname: '/contact', search: `?topic=${qParam}` }}
-                    style={{ ...styles.buttonBase, ...styles.buttonOutline }}
-                    aria-label={`Book a free consult about ${title}`}
+                    className="btn btn-secondary btn-sm"
+                    aria-label={`Discuss ${title}`}
                   >
-                    Book a free consult
+                    Discuss
                   </Link>
                 </div>
               </article>
@@ -318,24 +170,17 @@ const ServicesGrid: React.FC<ServicesGridProps> = ({ showHeader = true, showCTAs
 
         {showCTAs && (
           <>
-            <div style={styles.footerCtas}>
-              <Link
-                to="/work"
-                style={{ ...styles.buttonBase, ...styles.buttonOutline }}
-                aria-label="View portfolio"
-              >
-                View portfolio
+            <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-8)', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link to="/work" className="btn btn-secondary" aria-label="View our work">
+                View Our Work
               </Link>
-              <Link
-                to="/quote"
-                style={{ ...styles.buttonBase, ...styles.buttonPrimary }}
-                aria-label="Request a quote"
-              >
-                Request a quote
+              <Link to="/quote" className="btn btn-primary" aria-label="Request a quote">
+                Request Quote
               </Link>
             </div>
-            <p style={styles.smallNote}>
-              Banking-grade experience: delivered credit origination and business-process automation for consumer lending.
+            <p className="text-muted text-center" style={{ marginTop: 'var(--space-4)', fontSize: '0.875rem' }}>
+              <strong style={{ color: 'var(--heading)' }}>Banking-grade experience:</strong> Delivered credit origination
+              and consumer lending automation. Security, testing, and reliability come standard.
             </p>
           </>
         )}
