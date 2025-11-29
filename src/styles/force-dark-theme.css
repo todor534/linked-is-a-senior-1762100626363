@@ -1,0 +1,25 @@
+/* Force dark theme override */
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg: #0b0d12 !important;
+        --bg-elev: #10131a !important;
+        --surface: #121723 !important;
+        --surface-2: #151b28 !important;
+        --muted: #97a0b3 !important;
+        --text: #e6e9f2 !important;
+        --heading: #f7f8fb !important;
+        --border: #263041 !important;
+        --primary: #2563eb !important;
+        --accent: #10b981 !important;
+        --glass: rgba(16, 19, 26, .6) !important;
+        --ring: 0 0 0 4px rgba(37, 99, 235, .25) !important;
+        --ring-strong: 0 0 0 6px rgba(37, 99, 235, .35) !important;
+        color-scheme: dark !important;
+    }
+
+    body {
+        background: radial-gradient(1200px 800px at 80% -10%, rgba(37, 99, 235, .12), transparent 60%),
+            radial-gradient(900px 600px at 10% 20%, rgba(16, 185, 129, .10), transparent 50%),
+            var(--bg) !important;
+    }
+}
