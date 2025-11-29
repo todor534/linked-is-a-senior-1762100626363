@@ -39,7 +39,7 @@ export default function Home() {
             <div className="card padded">
               <h3>How We Work</h3>
               <div style={{ marginTop: 'var(--space-4)' }}>
-                <Process Steps />
+                <ProcessSteps />
               </div>
             </div>
           </div>
