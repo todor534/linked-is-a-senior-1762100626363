@@ -111,9 +111,7 @@ export default function Hero() {
             <span style={{ width: '10px', height: '10px', borderRadius: '999px', background: 'var(--danger)' }} />
             <span style={{ width: '10px', height: '10px', borderRadius: '999px', background: 'var(--warning)' }} />
             <span style={{ width: '10px', height: '10px', borderRadius: '999px', background: 'var(--success)' }} />
-            <span style={{ marginLeft: '6px', color: 'var(--muted)', fontSize: '0.75rem' }}>
-              Live preview — AI-powered dashboard
-            </span>
+
           </div>
           <img
             src="https://jg7nnjuy9jonydmm.public.blob.vercel-storage.com/ai/1762100279742-img-hero-dashboard.png"

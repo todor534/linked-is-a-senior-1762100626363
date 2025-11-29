@@ -43,36 +43,36 @@ const TIMELINE_OPTIONS = ['ASAP', '2–4 weeks', '1–3 months', '3–6 months',
 
 const styles = {
   card: {
-    background: '#ffffff',
-    border: '1px solid #e5e7eb',
-    borderRadius: 12,
-    boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
+    background: 'var(--surface)',
+    border: '1px solid var(--border)',
+    borderRadius: 'var(--radius-lg)',
+    boxShadow: 'var(--shadow-sm)',
   } as const,
   header: {
-    marginBottom: 8,
+    marginBottom: 'var(--space-4)',
   } as const,
   title: {
     margin: 0,
-    fontSize: 20,
+    fontSize: '1.25rem',
     lineHeight: 1.2,
-    color: '#111827',
+    color: 'var(--heading)',
     fontWeight: 700,
   } as const,
   subtitle: {
     margin: 0,
-    marginTop: 6,
-    fontSize: 14,
-    color: '#6b7280',
+    marginTop: '6px',
+    fontSize: '0.875rem',
+    color: 'var(--muted)',
   } as const,
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 16,
+    gap: 'var(--space-4)',
   } as const,
   row: {
     display: 'flex',
     flexWrap: 'wrap' as const,
-    gap: 12,
+    gap: 'var(--space-3)',
   },
   field: {
     flex: '1 1 260px',
@@ -80,111 +80,116 @@ const styles = {
   } as const,
   label: {
     display: 'block',
-    fontSize: 13,
+    fontSize: '0.8125rem',
     fontWeight: 600,
-    color: '#374151',
-    marginBottom: 6,
+    color: 'var(--heading)',
+    marginBottom: '6px',
   } as const,
   required: {
-    color: '#ef4444',
+    color: 'var(--danger)',
     marginLeft: 4,
   } as const,
   input: {
     width: '100%',
-    border: '1px solid #e5e7eb',
-    borderRadius: 10,
+    border: '1px solid var(--border)',
+    borderRadius: 'var(--radius-md)',
     padding: '10px 12px',
-    fontSize: 14,
+    fontSize: '0.9375rem',
     lineHeight: 1.4,
-    color: '#111827',
+    color: 'var(--text)',
     outline: 'none',
-    background: '#fff',
+    background: 'var(--bg)',
   } as const,
   textarea: {
     width: '100%',
-    border: '1px solid #e5e7eb',
-    borderRadius: 10,
+    border: '1px solid var(--border)',
+    borderRadius: 'var(--radius-md)',
     padding: '10px 12px',
-    fontSize: 14,
+    fontSize: '0.9375rem',
     lineHeight: 1.5,
-    color: '#111827',
+    color: 'var(--text)',
     outline: 'none',
     minHeight: 120,
     resize: 'vertical' as const,
-    background: '#fff',
+    background: 'var(--bg)',
   } as const,
   help: {
-    marginTop: 6,
-    fontSize: 12,
-    color: '#6b7280',
+    marginTop: '6px',
+    fontSize: '0.75rem',
+    color: 'var(--muted)',
   } as const,
   errorText: {
-    marginTop: 6,
-    fontSize: 12,
-    color: '#b00020',
+    marginTop: '6px',
+    fontSize: '0.75rem',
+    color: 'var(--danger)',
   } as const,
   checkboxGroup: {
     display: 'flex',
     flexWrap: 'wrap' as const,
-    gap: 8,
+    gap: '8px',
   } as const,
   checkboxItem: {
     display: 'flex',
     alignItems: 'center',
-    gap: 8,
-    padding: '8px 10px',
-    border: '1px solid #e5e7eb',
-    borderRadius: 999,
-    background: '#f9fafb',
+    gap: '8px',
+    padding: '8px 12px',
+    border: '1px solid var(--border)',
+    borderRadius: '999px',
+    background: 'var(--surface-2)',
     cursor: 'pointer',
+    fontSize: '0.875rem',
+    color: 'var(--text)',
+    transition: 'all 0.2s ease',
   } as const,
   checkbox: {
     display: 'inline-block',
     width: 16,
     height: 16,
+    accentColor: 'var(--primary)',
   } as const,
   actions: {
     display: 'flex',
     alignItems: 'center',
-    gap: 12,
-    marginTop: 4,
+    gap: 'var(--space-3)',
+    marginTop: 'var(--space-2)',
     flexWrap: 'wrap' as const,
   } as const,
   button: {
     appearance: 'none' as const,
     border: 'none',
-    borderRadius: 10,
-    padding: '10px 16px',
-    fontSize: 14,
+    borderRadius: 'var(--radius-md)',
+    padding: '10px 18px',
+    fontSize: '0.9375rem',
     fontWeight: 600,
-    background: '#111827',
+    background: 'var(--primary)',
     color: '#ffffff',
     cursor: 'pointer',
+    boxShadow: '0 4px 12px rgba(37, 99, 235, 0.2)',
   } as const,
   secondaryText: {
-    fontSize: 13,
-    color: '#6b7280',
+    fontSize: '0.8125rem',
+    color: 'var(--muted)',
   } as const,
   successBox: {
-    background: '#ecfdf5',
-    border: '1px solid #10b98133',
-    color: '#065f46',
-    padding: 12,
-    borderRadius: 10,
-    fontSize: 14,
+    background: 'color-mix(in oklab, var(--success), transparent 90%)',
+    border: '1px solid color-mix(in oklab, var(--success), transparent 70%)',
+    color: 'var(--success)',
+    padding: '12px',
+    borderRadius: 'var(--radius-md)',
+    fontSize: '0.9375rem',
   } as const,
   errorBox: {
-    background: '#fef2f2',
-    border: '1px solid #ef444433',
-    color: '#991b1b',
-    padding: 12,
-    borderRadius: 10,
-    fontSize: 14,
+    background: 'color-mix(in oklab, var(--danger), transparent 90%)',
+    border: '1px solid color-mix(in oklab, var(--danger), transparent 70%)',
+    color: 'var(--danger)',
+    padding: '12px',
+    borderRadius: 'var(--radius-md)',
+    fontSize: '0.9375rem',
   } as const,
   charCounter: {
-    fontSize: 12,
-    color: '#9ca3af',
-    marginLeft: 8,
+    fontSize: '0.75rem',
+    color: 'var(--muted)',
+    marginLeft: '8px',
   } as const,
   hiddenHP: {
     position: 'absolute' as const,
@@ -429,7 +434,7 @@ export default function QuoteForm({ compact = false, onSuccess, presetServices =
               onChange={(e) => handleInputChange('name', e.target.value)}
               style={{
                 ...styles.input,
-                borderColor: errors.name ? '#b00020' : (styles.input as any).borderColor,
+                borderColor: errors.name ? 'var(--danger)' : (styles.input as any).borderColor,
               }}
               aria-invalid={!!errors.name}
               aria-describedby={errors.name ? 'err-name' : undefined}
@@ -451,7 +456,7 @@ export default function QuoteForm({ compact = false, onSuccess, presetServices =
               onChange={(e) => handleInputChange('email', e.target.value)}
               style={{
                 ...styles.input,
-                borderColor: errors.email ? '#b00020' : (styles.input as any).borderColor,
+                borderColor: errors.email ? 'var(--danger)' : (styles.input as any).borderColor,
               }}
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? 'err-email' : undefined}
@@ -485,7 +490,7 @@ export default function QuoteForm({ compact = false, onSuccess, presetServices =
               onChange={(e) => handleInputChange('website', e.target.value)}
               style={{
                 ...styles.input,
-                borderColor: errors.website ? '#b00020' : (styles.input as any).borderColor,
+                borderColor: errors.website ? 'var(--danger)' : (styles.input as any).borderColor,
               }}
               aria-invalid={!!errors.website}
               aria-describedby={errors.website ? 'err-website' : undefined}
@@ -503,7 +508,7 @@ export default function QuoteForm({ compact = false, onSuccess, presetServices =
               onChange={(e) => handleInputChange('phone', e.target.value)}
               style={{
                 ...styles.input,
-                borderColor: errors.phone ? '#b00020' : (styles.input as any).borderColor,
+                borderColor: errors.phone ? 'var(--danger)' : (styles.input as any).borderColor,
               }}
               aria-invalid={!!errors.phone}
               aria-describedby={errors.phone ? 'err-phone' : undefined}
@@ -524,9 +529,9 @@ export default function QuoteForm({ compact = false, onSuccess, presetServices =
                   key={svc}
                   style={{
                     ...styles.checkboxItem,
-                    borderColor: selected ? '#111827' : (styles.checkboxItem as any).borderColor,
-                    background: selected ? '#111827' : (styles.checkboxItem as any).background,
-                    color: selected ? '#ffffff' : '#374151',
+                    borderColor: selected ? 'var(--primary)' : (styles.checkboxItem as any).borderColor,
+                    background: selected ? 'var(--primary)' : (styles.checkboxItem as any).background,
+                    color: selected ? '#ffffff' : 'var(--text)',
                   }}
                 >
                   <input
@@ -609,7 +614,7 @@ export default function QuoteForm({ compact = false, onSuccess, presetServices =
             onChange={(e) => handleInputChange('brief', e.target.value)}
             style={{
               ...styles.textarea,
-              borderColor: errors.brief ? '#b00020' : (styles.textarea as any).borderColor,
+              borderColor: errors.brief ? 'var(--danger)' : (styles.textarea as any).borderColor,
             }}
             aria-invalid={!!errors.brief}
             aria-describedby={errors.brief ? 'err-brief' : 'brief-help'}

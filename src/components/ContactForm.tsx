@@ -164,8 +164,8 @@ export default function ContactForm({
           <h3 style={styles.successTitle}>{successTitle}</h3>
           <p style={styles.successText}>{successMessage}</p>
           <div style={styles.successActions}>
-            <a href="/work" style={styles.secondaryButton}>View portfolio</a>
-            <a href="/quote" style={styles.ghostButton}>Request a quote</a>
+            <a href="/work" className="btn btn-secondary">View portfolio</a>
+            <a href="/quote" className="btn btn-ghost">Request a quote</a>
           </div>
         </div>
       </div>
@@ -355,6 +355,7 @@ export default function ContactForm({
             checked={data.consent}
             onChange={(e) => handleChange('consent', e.target.checked)}
             disabled={isDisabled}
+            style={{ accentColor: 'var(--primary)' }}
           />
           <span style={styles.checkboxText}>
             I agree to be contacted and to the processing of my information as described in the privacy policy.
@@ -366,11 +367,12 @@ export default function ContactForm({
           <button
             type="submit"
             disabled={isDisabled}
-            style={{ ...styles.button, ...(isDisabled ? styles.buttonDisabled : null) }}
+            className="btn btn-primary"
+            style={{ ...(isDisabled ? styles.buttonDisabled : null) }}
           >
             {status === 'submitting' ? 'Sending…' : submitLabel}
           </button>
-          <a href="/work" style={styles.linkButton}>View portfolio</a>
+          <a href="/work" className="btn btn-ghost">View portfolio</a>
         </div>
       </div>
     </form>
@@ -382,32 +384,32 @@ const styles: Record<string, React.CSSProperties> = {
     width: '100%',
     maxWidth: 920,
     margin: '0 auto',
-    background: 'linear-gradient(180deg, rgba(250,250,252,1) 0%, rgba(245,246,248,1) 100%)',
-    border: '1px solid #E8E9EE',
-    boxShadow: '0 10px 30px rgba(16, 24, 40, 0.06)',
-    borderRadius: 16,
-    padding: 24,
+    background: 'var(--surface)',
+    border: '1px solid var(--border)',
+    boxShadow: 'var(--shadow-md)',
+    borderRadius: 'var(--radius-lg)',
+    padding: 'var(--space-6)',
   },
   header: {
-    marginBottom: 16,
+    marginBottom: 'var(--space-6)',
   },
   title: {
     margin: 0,
-    fontSize: 22,
+    fontSize: '1.5rem',
     lineHeight: 1.3,
     fontWeight: 700,
-    color: '#0B1220',
+    color: 'var(--heading)',
   },
   subtitle: {
     margin: '6px 0 0 0',
-    fontSize: 14,
-    color: '#4B5563',
+    fontSize: '0.9375rem',
+    color: 'var(--muted)',
   },
   row: {
     display: 'flex',
-    gap: 16,
+    gap: 'var(--space-4)',
     flexWrap: 'wrap',
-    marginTop: 16,
+    marginTop: 'var(--space-4)',
   },
   colHalf: {
     flex: '1 1 280px',
@@ -419,110 +421,96 @@ const styles: Record<string, React.CSSProperties> = {
   },
   label: {
     display: 'block',
-    color: '#111827',
-    fontSize: 13,
+    color: 'var(--heading)',
+    fontSize: '0.875rem',
     fontWeight: 600,
-    marginBottom: 8,
+    marginBottom: 'var(--space-2)',
   },
   input: {
     width: '100%',
-    height: 40,
-    borderRadius: 10,
-    border: '1px solid #D1D5DB',
+    height: 44,
+    borderRadius: 'var(--radius-md)',
+    border: '1px solid var(--border)',
     padding: '8px 12px',
-    fontSize: 14,
+    fontSize: '0.9375rem',
     outline: 'none',
-    backgroundColor: '#fff',
+    backgroundColor: 'var(--bg)',
+    color: 'var(--text)',
+    transition: 'border-color 0.2s ease',
   },
   select: {
     width: '100%',
-    height: 40,
-    borderRadius: 10,
-    border: '1px solid #D1D5DB',
+    height: 44,
+    borderRadius: 'var(--radius-md)',
+    border: '1px solid var(--border)',
     padding: '8px 12px',
-    fontSize: 14,
+    fontSize: '0.9375rem',
     outline: 'none',
-    backgroundColor: '#fff',
+    backgroundColor: 'var(--bg)',
+    color: 'var(--text)',
     appearance: 'none',
     backgroundImage:
-      'linear-gradient(45deg, transparent 50%, #6B7280 50%), linear-gradient(135deg, #6B7280 50%, transparent 50%), linear-gradient(to right, #fff, #fff)',
-    backgroundPosition: 'calc(100% - 18px) 16px, calc(100% - 12px) 16px, 0 0',
-    backgroundSize: '6px 6px, 6px 6px, 100% 100%',
+      'linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%)',
+    backgroundPosition: 'calc(100% - 18px) 18px, calc(100% - 12px) 18px',
+    backgroundSize: '6px 6px, 6px 6px',
     backgroundRepeat: 'no-repeat',
   },
   textarea: {
     width: '100%',
-    borderRadius: 10,
-    border: '1px solid #D1D5DB',
-    padding: '10px 12px',
-    fontSize: 14,
+    borderRadius: 'var(--radius-md)',
+    border: '1px solid var(--border)',
+    padding: '12px',
+    fontSize: '0.9375rem',
     outline: 'none',
-    backgroundColor: '#fff',
+    backgroundColor: 'var(--bg)',
+    color: 'var(--text)',
     resize: 'vertical',
     minHeight: 120,
+    marginTop: 'var(--space-4)',
   },
   inputError: {
-    borderColor: '#DC2626',
-    boxShadow: '0 0 0 3px rgba(220, 38, 38, 0.08)',
+    borderColor: 'var(--danger)',
+    boxShadow: '0 0 0 3px rgba(239, 68, 68, 0.15)',
   },
   footerRow: {
-    marginTop: 18,
+    marginTop: 'var(--space-6)',
   },
   checkboxLabel: {
     display: 'flex',
     alignItems: 'flex-start',
     gap: 10,
-    fontSize: 13,
-    color: '#374151',
+    fontSize: '0.875rem',
+    color: 'var(--text)',
+    cursor: 'pointer',
   },
   checkboxText: {
     lineHeight: 1.4,
+    color: 'var(--muted)',
   },
   actions: {
     display: 'flex',
-    gap: 12,
+    gap: 'var(--space-3)',
     alignItems: 'center',
-    marginTop: 14,
+    marginTop: 'var(--space-4)',
     flexWrap: 'wrap',
-  },
-  button: {
-    backgroundColor: '#111827',
-    color: '#fff',
-    border: '1px solid #111827',
-    borderRadius: 10,
-    padding: '10px 16px',
-    fontSize: 14,
-    fontWeight: 600,
-    cursor: 'pointer',
-    transition: 'all 120ms ease',
   },
   buttonDisabled: {
     opacity: 0.65,
     cursor: 'not-allowed',
   },
-  linkButton: {
-    textDecoration: 'none',
-    color: '#111827',
-    fontSize: 14,
-    fontWeight: 600,
-    padding: '10px 14px',
-    borderRadius: 10,
-    border: '1px solid #D1D5DB',
-    backgroundColor: '#fff',
-  },
   alert: {
-    backgroundColor: '#FEF2F2',
-    color: '#991B1B',
-    border: '1px solid #FECACA',
-    padding: '10px 12px',
-    borderRadius: 10,
-    fontSize: 14,
-    marginTop: 8,
+    backgroundColor: 'color-mix(in oklab, var(--danger), transparent 90%)',
+    color: 'var(--danger)',
+    border: '1px solid color-mix(in oklab, var(--danger), transparent 70%)',
+    padding: '12px',
+    borderRadius: 'var(--radius-md)',
+    fontSize: '0.9375rem',
+    marginTop: 'var(--space-2)',
   },
   errorText: {
-    color: '#B91C1C',
-    fontSize: 12,
-    marginTop: 6,
+    color: 'var(--danger)',
+    fontSize: '0.8125rem',
+    marginTop: '4px',
   },
   honeypot: {
     position: 'absolute',
@@ -536,11 +524,11 @@ const styles: Record<string, React.CSSProperties> = {
     width: '100%',
     maxWidth: 680,
     margin: '0 auto',
-    borderRadius: 16,
-    border: '1px solid #E8E9EE',
-    background: '#ffffff',
-    padding: 24,
-    boxShadow: '0 10px 30px rgba(16, 24, 40, 0.06)',
+    borderRadius: 'var(--radius-lg)',
+    border: '1px solid var(--border)',
+    background: 'var(--surface)',
+    padding: 'var(--space-8)',
+    boxShadow: 'var(--shadow-lg)',
   },
   successCard: {
     textAlign: 'center' as const,
@@ -549,48 +537,28 @@ const styles: Record<string, React.CSSProperties> = {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 48,
-    height: 48,
+    width: 56,
+    height: 56,
     borderRadius: 999,
-    background: '#DCFCE7',
-    color: '#166534',
+    background: 'color-mix(in oklab, var(--success), transparent 85%)',
+    color: 'var(--success)',
     fontWeight: 800,
-    marginBottom: 8,
-    fontSize: 20,
+    marginBottom: 'var(--space-4)',
+    fontSize: 24,
   },
   successTitle: {
     margin: '6px 0',
-    fontSize: 20,
-    color: '#0B1220',
+    fontSize: '1.5rem',
+    color: 'var(--heading)',
   },
   successText: {
-    margin: '0 0 12px 0',
-    color: '#4B5563',
-    fontSize: 14,
+    margin: '0 0 var(--space-6) 0',
+    color: 'var(--muted)',
+    fontSize: '1rem',
   },
   successActions: {
     display: 'flex',
-    gap: 10,
+    gap: 'var(--space-3)',
     justifyContent: 'center',
-  },
-  secondaryButton: {
-    textDecoration: 'none',
-    backgroundColor: '#111827',
-    color: '#fff',
-    border: '1px solid #111827',
-    borderRadius: 10,
-    padding: '10px 16px',
-    fontSize: 14,
-    fontWeight: 600,
-  },
-  ghostButton: {
-    textDecoration: 'none',
-    color: '#111827',
-    fontSize: 14,
-    fontWeight: 600,
-    padding: '10px 14px',
-    borderRadius: 10,
-    border: '1px solid #D1D5DB',
-    backgroundColor: '#fff',
   },
 };
